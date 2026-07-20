@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUTURA — Preview</title>
+<style>
+  :root{
+    --graphite: #1A1E23;
+    --graphite-soft: #23282f;
+    --green: #00A87E;
+    --blue: #0052FF;
+    --cyan: #00D9FF;
+    --paper: #F5F7F8;
+    --line: rgba(255,255,255,0.08);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--graphite);
+    color:#EDEFF1;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height:1.55;
+  }
+  .display{
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    letter-spacing:-0.02em;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:0 28px;}
+
+  /* HERO (existing) */
+  .hero{
+    padding:110px 0 90px;
+    text-align:center;
+    background:
+      radial-gradient(circle at 20% 10%, rgba(0,217,255,0.10), transparent 45%),
+      radial-gradient(circle at 80% 30%, rgba(0,168,126,0.12), transparent 50%),
+      var(--graphite);
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    display:inline-block;
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--cyan);
+    border:1px solid rgba(0,217,255,0.35);
+    padding:6px 14px;
+    border-radius:100px;
+    margin-bottom:26px;
+  }
+  h1.display{
+    font-size:44px;
+    font-weight:600;
+    margin:0 0 18px;
+    color:#fff;
+  }
+  .hero p.lead{
+    font-size:17px;
+    color:#B9C0C7;
+    max-width:520px;
+    margin:0 auto 34px;
+  }
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    padding:13px 26px;
+    border-radius:8px;
+    font-size:14.5px;
+    font-weight:600;
+    cursor:pointer;
+    border:none;
+  }
+  .btn-primary{background:var(--green);color:#08110D;}
+  .btn-ghost{background:transparent;color:#EDEFF1;border:1px solid var(--line);}
+  .stats{
+    display:flex;justify-content:center;gap:56px;
+    margin-top:56px;padding-top:36px;border-top:1px solid var(--line);
+  }
+  .stat-num{font-size:26px;font-weight:700;color:#fff;}
+  .stat-label{font-size:12px;color:#8B939B;text-transform:uppercase;letter-spacing:0.08em;margin-top:4px;}
+
+  /* NEW SECTIONS */
+  section.content{padding:78px 0;border-bottom:1px solid var(--line);}
+  .tag{
+    font-size:11.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .tag.s1{color:var(--cyan);}
+  .tag.s2{color:var(--green);}
+  .tag.s3{color:var(--blue);}
+  h2.display{
+    font-size:28px;font-weight:600;color:#fff;margin:0 0 18px;max-width:560px;
+  }
+  section.content p{
+    font-size:16px;color:#C3C9CF;max-width:640px;margin:0;
+  }
+
+  /* Section 1: definition, icon-led */
+  .s1-body{display:flex;gap:32px;align-items:flex-start;}
+  .icon-badge{
+    flex-shrink:0;width:52px;height:52px;border-radius:12px;
+    background:rgba(0,217,255,0.10);border:1px solid rgba(0,217,255,0.25);
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  /* Section 2: referents, three cards */
+  .referents{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px;}
+  .ref-card{
+    background:var(--graphite-soft);border:1px solid var(--line);
+    border-radius:12px;padding:22px 20px;
+  }
+  .ref-place{font-size:12px;color:#8B939B;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px;}
+  .ref-name{font-size:16px;font-weight:600;color:#fff;margin-bottom:10px;}
+  .ref-desc{font-size:14px;color:#A9B0B7;line-height:1.5;}
+  .ref-card:nth-child(1){border-top:2px solid var(--cyan);}
+  .ref-card:nth-child(2){border-top:2px solid var(--green);}
+  .ref-card:nth-child(3){border-top:2px solid var(--blue);}
+
+  /* Section 3: FUTURA ecosystem */
+  .eco-wrap{
+    background:linear-gradient(135deg, rgba(0,168,126,0.08), rgba(0,82,255,0.06));
+    border:1px solid rgba(0,168,126,0.2);
+    border-radius:16px;padding:38px;margin-top:8px;
+  }
+  .eco-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;}
+  .eco-pill{
+    font-size:12.5px;padding:7px 13px;border-radius:100px;
+    background:rgba(255,255,255,0.06);border:1px solid var(--line);color:#D6DADE;
+  }
+  .eco-connect{margin-top:22px;font-size:14px;color:#8B939B;}
+
+  footer{padding:40px 0;text-align:center;font-size:12.5px;color:#6A7178;}
+
+  .annot{
+    text-align:center;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+    color:#565d64;padding:16px 0;background:#101318;
+  }
+
+  @media (max-width:640px){
+    h1.display{font-size:32px;}
+    .stats{gap:32px;}
+    .referents{grid-template-columns:1fr;}
+    .s1-body{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="annot">Preview — así se vería la página con las secciones nuevas · no es el sitio en vivo</div>
+
+  <!-- HERO existente -->
+  <div class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Próximamente</span>
+      <h1 class="display">El nuevo Motor de Innovación de Caldas</h1>
+      <p class="lead">Estamos construyendo el ecosistema tecnológico más importante de la región. Un espacio donde la ciencia, la tecnología y el emprendimiento convergen.</p>
+      <div class="cta-row">
+        <button class="btn btn-primary">Quiero Participar</button>
+        <button class="btn btn-ghost">Banco de Problemas</button>
+      </div>
+      <div class="stats">
+        <div><div class="stat-num">0</div><div class="stat-label">Retos de Innovación</div></div>
+        <div><div class="stat-num">0</div><div class="stat-label">Solucionadores</div></div>
+        <div><div class="stat-num">0</div><div class="stat-label">Casos de Éxito</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 1: ¿Qué es? -->
+  <section class="content">
+    <div class="wrap">
+      <div class="tag s1">Qué es</div>
+      <div class="s1-body">
+        <div class="icon-badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00D9FF" stroke-width="1.6">
+            <path d="M12 2v6M9 8h6l3 12H6L9 8z"/>
+            <circle cx="12" cy="8" r="1" fill="#00D9FF"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="display">¿Qué es un Parque Científico, Tecnológico y de Innovación?</h2>
+          <p>Es el lugar donde el conocimiento se convierte en desarrollo. Un espacio donde universidades, empresas y Estado trabajan bajo un mismo techo para transformar investigación en productos, empresas y empleo real. No es solo infraestructura: es el motor que conecta ideas con mercado, y talento con oportunidad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2: Referentes -->
+  <section class="content">
+    <div class="wrap">
+      <div class="tag s2">Un modelo probado</div>
+      <h2 class="display">Territorios que cambiaron su destino económico</h2>
+      <p>En el mundo, los territorios que apostaron por estos ecosistemas transformaron su trayectoria en una sola generación. Caldas se suma a esa tradición.</p>
+      <div class="referents">
+        <div class="ref-card">
+          <div class="ref-place">Carolina del Norte, EE.UU.</div>
+          <div class="ref-name">Research Triangle Park</div>
+          <div class="ref-desc">Convirtió tres ciudades en uno de los polos tecnológicos más importantes de Estados Unidos.</div>
+        </div>
+        <div class="ref-card">
+          <div class="ref-place">Barcelona, España</div>
+          <div class="ref-name">22@Barcelona</div>
+          <div class="ref-desc">Transformó un distrito industrial en el corazón de innovación de la ciudad.</div>
+        </div>
+        <div class="ref-card">
+          <div class="ref-place">Medellín, Colombia</div>
+          <div class="ref-name">Ruta N</div>
+          <div class="ref-desc">Hizo de Medellín una referencia latinoamericana en tecnología y emprendimiento.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3: FUTURA -->
+  <section class="content" style="border-bottom:none;">
+    <div class="wrap">
+      <div class="tag s3">El ecosistema</div>
+      <h2 class="display">FUTURA: el ecosistema de innovación territorial de Caldas</h2>
+      <div class="eco-wrap">
+        <p>FUTURA es el ecosistema que Caldas construye para que la innovación tenga raíces, no solo edificios. Ubicado estratégicamente en Villamaría, articula investigación, emprendimiento, formación y tecnología en un mismo territorio, conectado con el clúster MANTIX y las universidades de la red SUMA. Aquí convergen las capacidades científicas y empresariales de la región para responder a los desafíos reales de Caldas y proyectar su desarrollo hacia el futuro.</p>
+        <div class="eco-tags">
+          <span class="eco-pill">Clúster MANTIX</span>
+          <span class="eco-pill">Red SUMA</span>
+          <span class="eco-pill">Villamaría, Caldas</span>
+        </div>
+        <div class="eco-connect">Parte de un ecosistema en expansión — más frentes de trabajo, próximamente.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Villamaría, Caldas, Colombia · © 2025 FUTURA Science and Technology Park</footer>
+
+</body>
+</html>

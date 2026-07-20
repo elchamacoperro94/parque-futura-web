@@ -540,6 +540,153 @@
         gap: 1.5rem;
       }
     }
+
+    /* ─── NUEVAS SECCIONES DE CONTENIDO ─────────────── */
+    .content-section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+    }
+
+    .content-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .section-tag.s1 { color: var(--innovation-cyan); }
+    .section-tag.s2 { color: var(--futura-green); }
+    .section-tag.s3 { color: var(--quantum-blue); }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text-primary);
+      margin-bottom: 1.2rem;
+      max-width: 680px;
+    }
+
+    .section-desc {
+      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 680px;
+    }
+
+    /* Sección 1: Qué es */
+    .s1-grid {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .icon-badge {
+      flex-shrink: 0;
+      width: 54px;
+      height: 54px;
+      border-radius: var(--radius-md);
+      background: rgba(0, 217, 255, 0.10);
+      border: 1px solid rgba(0, 217, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Sección 2: Referentes */
+    .referents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 2.5rem;
+      text-align: left;
+    }
+
+    .ref-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 24px 20px;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .ref-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .ref-card.c1 { border-top: 3px solid var(--innovation-cyan); }
+    .ref-card.c2 { border-top: 3px solid var(--futura-green); }
+    .ref-card.c3 { border-top: 3px solid var(--quantum-blue); }
+
+    .ref-place {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .ref-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .ref-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Sección 3: Ecosistema */
+    .eco-container {
+      background: linear-gradient(135deg, rgba(0,168,126,0.08), rgba(0,82,255,0.06));
+      border: 1px solid rgba(0,168,126,0.25);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      margin-top: 1rem;
+      text-align: left;
+    }
+
+    .eco-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .eco-pill {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border-default);
+      color: var(--text-primary);
+    }
+
+    .eco-footer-note {
+      margin-top: 20px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 640px) {
+      .s1-grid { flex-direction: column; }
+      .eco-container { padding: 24px; }
+    }
   </style>
 </head>
 <body>
@@ -638,6 +785,68 @@
             <span class="stat-label">Casos de Éxito</span>
           </div>
         </div>
+
+        <!-- SECCIÓN 1: ¿Qué es? -->
+        <section class="content-section scroll-reveal" id="que-es">
+          <div class="section-tag s1">Qué es</div>
+          <div class="s1-grid">
+            <div class="icon-badge" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00D9FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v6M9 8h6l3 12H6L9 8z"/>
+                <circle cx="12" cy="8" r="1" fill="#00D9FF"/>
+              </svg>
+            </div>
+            <div>
+              <h2 class="section-title">¿Qué es un Parque Científico, Tecnológico y de Innovación?</h2>
+              <p class="section-desc">
+                Es el lugar donde el conocimiento se convierte en desarrollo. Un espacio donde universidades, empresas y Estado trabajan bajo un mismo techo para transformar investigación en productos, empresas y empleo real. No es solo infraestructura: es el motor que conecta ideas con mercado, y talento con oportunidad.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 2: Referentes -->
+        <section class="content-section scroll-reveal" id="referentes">
+          <div class="section-tag s2">Un modelo probado</div>
+          <h2 class="section-title">Territorios que cambiaron su destino económico</h2>
+          <p class="section-desc">
+            En el mundo, los territorios que apostaron por estos ecosistemas transformaron su trayectoria en una sola generación. Caldas se suma a esa tradición.
+          </p>
+          <div class="referents-grid">
+            <article class="ref-card c1">
+              <span class="ref-place">Carolina del Norte, EE.UU.</span>
+              <h3 class="ref-name">Research Triangle Park</h3>
+              <p class="ref-desc">Convirtió tres ciudades en uno de los polos tecnológicos más importantes de Estados Unidos.</p>
+            </article>
+            <article class="ref-card c2">
+              <span class="ref-place">Barcelona, España</span>
+              <h3 class="ref-name">22@Barcelona</h3>
+              <p class="ref-desc">Transformó un distrito industrial en el corazón de innovación de la ciudad.</p>
+            </article>
+            <article class="ref-card c3">
+              <span class="ref-place">Medellín, Colombia</span>
+              <h3 class="ref-name">Ruta N</h3>
+              <p class="ref-desc">Hizo de Medellín una referencia latinoamericana en tecnología y emprendimiento.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 3: Ecosistema -->
+        <section class="content-section scroll-reveal" id="ecosistema" style="border-bottom: none;">
+          <div class="section-tag s3">El ecosistema</div>
+          <h2 class="section-title">FUTURA: el ecosistema de innovación territorial de Caldas</h2>
+          <div class="eco-container">
+            <p class="section-desc">
+              FUTURA es el ecosistema que Caldas construye para que la innovación tenga raíces, no solo edificios. Ubicado estratégicamente en Villamaría, articula investigación, emprendimiento, formación y tecnología en un mismo territorio, conectado con el clúster MANTIX y las universidades de la red SUMA. Aquí convergen las capacidades científicas y empresariales de la región para responder a los desafíos reales de Caldas y proyectar su desarrollo hacia el futuro.
+            </p>
+            <div class="eco-pills">
+              <span class="eco-pill">Clúster MANTIX</span>
+              <span class="eco-pill">Red SUMA</span>
+              <span class="eco-pill">Villamaría, Caldas</span>
+            </div>
+            <p class="eco-footer-note">Parte de un ecosistema en expansión — más frentes de trabajo, próximamente.</p>
+          </div>
+        </section>
 
       </div>
     </main>
@@ -834,6 +1043,17 @@
       success.style.display = 'flex';
       document.getElementById('form-hint').style.display = 'none';
     });
+
+    /* ─── REVELADO AL HACER SCROLL ────────────────── */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
   </script>
 </body>
 </html>
